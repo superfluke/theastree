@@ -2,7 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "theastree:blocks/sapwood"
+      "down": "theastree:blocks/sapwood",
+      "up": "theastree:blocks/dreamwoodlog",
+      "north": "theastree:blocks/dreamwoodlog",
+      "east": "theastree:blocks/dreamwoodlog",
+      "south": "theastree:blocks/dreamwoodlog",
+      "west": "theastree:blocks/dreamwoodlog",
+      "particle": "theastree:blocks/dreamwoodlog"
     },
     "model": "cube_all",
     "uvlock": true,

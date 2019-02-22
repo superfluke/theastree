@@ -2,7 +2,13 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "all": "theastree:blocks/dreamwoodroot"
+      "down": "theastree:blocks/dreamwoodroot",
+      "up": "theastree:blocks/dreamwoodroot",
+      "north": "theastree:blocks/menrillog",
+      "east": "theastree:blocks/menrillog",
+      "south": "theastree:blocks/menrillog",
+      "west": "theastree:blocks/menrillog",
+      "particle": "theastree:blocks/menrillog"
     },
     "model": "cube_all",
     "uvlock": true,
