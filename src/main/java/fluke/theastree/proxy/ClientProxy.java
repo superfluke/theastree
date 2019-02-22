@@ -1,6 +1,7 @@
 package fluke.theastree.proxy;
 
 import fluke.theastree.block.ModBlocks;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -13,5 +14,11 @@ public class ClientProxy extends CommonProxy
     public static void registerModels(ModelRegistryEvent event) 
 	{
         ModBlocks.initModels();
+    }
+	
+	@Override
+    public boolean fancyGraphicsEnabled()
+    {
+        return Minecraft.getMinecraft().gameSettings.fancyGraphics;
     }
 }

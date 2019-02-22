@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+//TODO oredict for logs/leaves
 @Mod(modid = TheasTree.MODID, name = TheasTree.NAME, version = TheasTree.VERSION, dependencies = TheasTree.DEPENDS)
 public class TheasTree 
 {
