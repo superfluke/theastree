@@ -34,6 +34,9 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockDreamwoodDoor.REG_NAME)
     public static BlockDreamwoodDoor dwDoor;
 	
+	@GameRegistry.ObjectHolder(BlockDreamwoodTrapdoor.REG_NAME)
+    public static BlockDreamwoodTrapdoor dwTrapdoor;
+	
 	@GameRegistry.ObjectHolder(BlockHeartWood.REG_NAME)
     public static BlockHeartWood heartwood;
 	
@@ -54,6 +57,7 @@ public class ModBlocks
 		reggy.register(new BlockDreamwoodLog());
 		reggy.register(new BlockDreamwoodLeaves());
 		reggy.register(new BlockDreamwoodDoor());
+		reggy.register(new BlockDreamwoodTrapdoor());
 		reggy.register(new BlockHeartWood());
 		reggy.register(new BlockSapWood());
 		reggy.register(new BlockBurlWood());
@@ -67,13 +71,13 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.dwRoot).setRegistryName(ModBlocks.dwRoot.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLog).setRegistryName(ModBlocks.dwLog.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLeaves).setRegistryName(ModBlocks.dwLeaves.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.dwTrapdoor).setRegistryName(ModBlocks.dwTrapdoor.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.heartwood).setRegistryName(ModBlocks.heartwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.sapwood).setRegistryName(ModBlocks.sapwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.burlwood).setRegistryName(ModBlocks.burlwood.getRegistryName()));
 		
-		//reggy.register(new ItemBlock(ModBlocks.dwDoor).setRegistryName(ModBlocks.dwDoor.getRegistryName()));
 		dreamwooddoor = new ItemDreamwoodDoor(ModBlocks.dwDoor);
-		reggy.register(dreamwooddoor.setRegistryName("dreamwooddoor_item").setUnlocalizedName("dreamwooddoor_item"));
+		reggy.register(dreamwooddoor);
 		dwDoor.setItemStack(new ItemStack(dreamwooddoor));
 	}
 	
@@ -85,6 +89,7 @@ public class ModBlocks
 		dwLog.initModel();
 		dwLeaves.initModel();
 		dwDoor.initModel();
+		dwTrapdoor.initModel();
 		heartwood.initModel();
 		sapwood.initModel();
 		burlwood.initModel();
