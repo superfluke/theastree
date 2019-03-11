@@ -1,9 +1,11 @@
 package fluke.theastree.block;
 
 import fluke.theastree.TheasTree;
+import fluke.theastree.item.ItemDreamwoodDoor;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -29,6 +31,9 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockDreamwoodLeaves.REG_NAME)
     public static BlockDreamwoodLeaves dwLeaves;
 	
+	@GameRegistry.ObjectHolder(BlockDreamwoodDoor.REG_NAME)
+    public static BlockDreamwoodDoor dwDoor;
+	
 	@GameRegistry.ObjectHolder(BlockHeartWood.REG_NAME)
     public static BlockHeartWood heartwood;
 	
@@ -38,6 +43,8 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockBurlWood.REG_NAME)
     public static BlockBurlWood burlwood;
 	
+	public static ItemDreamwoodDoor dreamwooddoor;
+	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) 
 	{
@@ -46,6 +53,7 @@ public class ModBlocks
 		reggy.register(new BlockDreamwoodRoot());
 		reggy.register(new BlockDreamwoodLog());
 		reggy.register(new BlockDreamwoodLeaves());
+		reggy.register(new BlockDreamwoodDoor());
 		reggy.register(new BlockHeartWood());
 		reggy.register(new BlockSapWood());
 		reggy.register(new BlockBurlWood());
@@ -62,6 +70,11 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.heartwood).setRegistryName(ModBlocks.heartwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.sapwood).setRegistryName(ModBlocks.sapwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.burlwood).setRegistryName(ModBlocks.burlwood.getRegistryName()));
+		
+		//reggy.register(new ItemBlock(ModBlocks.dwDoor).setRegistryName(ModBlocks.dwDoor.getRegistryName()));
+		dreamwooddoor = new ItemDreamwoodDoor(ModBlocks.dwDoor);
+		reggy.register(dreamwooddoor.setRegistryName("dreamwooddoor_item").setUnlocalizedName("dreamwooddoor_item"));
+		dwDoor.setItemStack(new ItemStack(dreamwooddoor));
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -71,9 +84,12 @@ public class ModBlocks
 		dwRoot.initModel();
 		dwLog.initModel();
 		dwLeaves.initModel();
+		dwDoor.initModel();
 		heartwood.initModel();
 		sapwood.initModel();
 		burlwood.initModel();
+		
+		dreamwooddoor.initModel();
 	}
 
 }
