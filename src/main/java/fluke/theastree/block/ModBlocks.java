@@ -31,6 +31,9 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockDreamwoodLeaves.REG_NAME)
     public static BlockDreamwoodLeaves dwLeaves;
 	
+	@GameRegistry.ObjectHolder(BlockDreamwoodTorch.REG_NAME)
+    public static BlockDreamwoodTorch dwTorch;
+	
 	@GameRegistry.ObjectHolder(BlockDreamwoodDoor.REG_NAME)
     public static BlockDreamwoodDoor dwDoor;
 	
@@ -46,6 +49,9 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockBurlWood.REG_NAME)
     public static BlockBurlWood burlwood;
 	
+	@GameRegistry.ObjectHolder(BlockLightBug.REG_NAME)
+    public static BlockLightBug lightbug;
+	
 	public static ItemDreamwoodDoor dreamwooddoor;
 	
 	@SubscribeEvent
@@ -56,11 +62,13 @@ public class ModBlocks
 		reggy.register(new BlockDreamwoodRoot());
 		reggy.register(new BlockDreamwoodLog());
 		reggy.register(new BlockDreamwoodLeaves());
+		reggy.register(new BlockDreamwoodTorch());
 		reggy.register(new BlockDreamwoodDoor());
 		reggy.register(new BlockDreamwoodTrapdoor());
 		reggy.register(new BlockHeartWood());
 		reggy.register(new BlockSapWood());
 		reggy.register(new BlockBurlWood());
+		reggy.register(new BlockLightBug());
 	}
 	
 	@SubscribeEvent
@@ -71,10 +79,12 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.dwRoot).setRegistryName(ModBlocks.dwRoot.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLog).setRegistryName(ModBlocks.dwLog.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLeaves).setRegistryName(ModBlocks.dwLeaves.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.dwTorch).setRegistryName(ModBlocks.dwTorch.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwTrapdoor).setRegistryName(ModBlocks.dwTrapdoor.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.heartwood).setRegistryName(ModBlocks.heartwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.sapwood).setRegistryName(ModBlocks.sapwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.burlwood).setRegistryName(ModBlocks.burlwood.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.lightbug).setRegistryName(ModBlocks.lightbug.getRegistryName()));
 		
 		dreamwooddoor = new ItemDreamwoodDoor(ModBlocks.dwDoor);
 		reggy.register(dreamwooddoor);
@@ -88,11 +98,13 @@ public class ModBlocks
 		dwRoot.initModel();
 		dwLog.initModel();
 		dwLeaves.initModel();
+		dwTorch.initModel();
 		dwDoor.initModel();
 		dwTrapdoor.initModel();
 		heartwood.initModel();
 		sapwood.initModel();
 		burlwood.initModel();
+		lightbug.initModel();
 		
 		dreamwooddoor.initModel();
 	}

@@ -78,6 +78,7 @@ public class BlockDreamwoodLeaves extends BlockLeaves
         return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);
     }
 	
+	//TODO why dont leaves darken like vanilla?
 	@Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer()

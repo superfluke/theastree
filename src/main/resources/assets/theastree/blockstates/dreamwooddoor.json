@@ -9,6 +9,7 @@
     }
   },
   "variants": {
+    "inventory": [{}],
     "facing": { "north": {}, "east": {}, "south": {}, "west": {} },
     "half"  : { "lower": {}, "upper": {} },
     "hinge" : { "left": {}, "right": {} },

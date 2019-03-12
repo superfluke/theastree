@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "theastree:dreamwoodtorch"
+    },
+    "facing=east": {
+      "model": "theastree:dreamwoodtorch_wall"
+    },
+    "facing=south": {
+      "model": "theastree:dreamwoodtorch_wall",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "theastree:dreamwoodtorch_wall",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "theastree:dreamwoodtorch_wall",
+      "y": 270
+    }
+  }
+}

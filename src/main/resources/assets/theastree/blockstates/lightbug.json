@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "theastree:lightbug",
+    "textures": {
+      "particle": "theastree:blocks/lightbug"
+    },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "up": { "model": "theastree:lightbug" },
+      "east": { "model": "theastree:lightbug_wall", "y": 270 },
+      "south": { "model": "theastree:lightbug_wall" },
+      "west": { "model": "theastree:lightbug_wall", "y": 90 },
+      "north": { "model": "theastree:lightbug_wall", "y": 180 }
+    }
+  }
+}
