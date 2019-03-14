@@ -52,6 +52,12 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockLightBug.REG_NAME)
     public static BlockLightBug lightbug;
 	
+	@GameRegistry.ObjectHolder(BlockFireBug.REG_NAME)
+    public static BlockFireBug firebug;
+	
+	@GameRegistry.ObjectHolder(BlockBlueBug.REG_NAME)
+    public static BlockBlueBug bluebug;
+	
 	public static ItemDreamwoodDoor dreamwooddoor;
 	
 	@SubscribeEvent
@@ -69,6 +75,8 @@ public class ModBlocks
 		reggy.register(new BlockSapWood());
 		reggy.register(new BlockBurlWood());
 		reggy.register(new BlockLightBug());
+		reggy.register(new BlockFireBug());
+		reggy.register(new BlockBlueBug());
 	}
 	
 	@SubscribeEvent
@@ -85,6 +93,8 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.sapwood).setRegistryName(ModBlocks.sapwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.burlwood).setRegistryName(ModBlocks.burlwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.lightbug).setRegistryName(ModBlocks.lightbug.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.firebug).setRegistryName(ModBlocks.firebug.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.bluebug).setRegistryName(ModBlocks.bluebug.getRegistryName()));
 		
 		dreamwooddoor = new ItemDreamwoodDoor(ModBlocks.dwDoor);
 		reggy.register(dreamwooddoor);
@@ -105,6 +115,8 @@ public class ModBlocks
 		sapwood.initModel();
 		burlwood.initModel();
 		lightbug.initModel();
+		firebug.initModel();
+		bluebug.initModel();
 		
 		dreamwooddoor.initModel();
 	}

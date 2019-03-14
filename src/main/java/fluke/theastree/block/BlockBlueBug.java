@@ -1,32 +1,20 @@
 package fluke.theastree.block;
 
-import java.util.Random;
-
 import fluke.theastree.TheasTree;
-import net.minecraft.block.BlockTorch;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLightBug extends BlockBugBase
+public class BlockBlueBug extends BlockBugBase
 {
 	
-	public static final String REG_NAME = "lightbug";
+	public static final String REG_NAME = "bluebug";
 	
-	public BlockLightBug()
+	public BlockBlueBug()
 	{
 		super();
-        this.setLightLevel(0.8F);
         setUnlocalizedName(TheasTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
 	}
@@ -36,4 +24,5 @@ public class BlockLightBug extends BlockBugBase
 	{
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
 	}
+
 }
