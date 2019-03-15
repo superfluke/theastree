@@ -18,7 +18,7 @@ public class TheasTree
 
 	public static final String MODID = "theastree";
 	public static final String NAME = "Thea's Tree";
-	public static final String VERSION = "1.0.0";
+	public static final String VERSION = "1.1.0";
 	public static final String DEPENDS = "";
 
 	@Instance(MODID)

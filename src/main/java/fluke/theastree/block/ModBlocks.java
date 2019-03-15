@@ -3,9 +3,12 @@ package fluke.theastree.block;
 import fluke.theastree.TheasTree;
 import fluke.theastree.item.ItemDreamwoodDoor;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -58,6 +61,9 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockBlueBug.REG_NAME)
     public static BlockBlueBug bluebug;
 	
+	@GameRegistry.ObjectHolder("dreamfruit")
+    public static Item dreamfruit;
+	
 	public static ItemDreamwoodDoor dreamwooddoor;
 	
 	@SubscribeEvent
@@ -96,6 +102,9 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.firebug).setRegistryName(ModBlocks.firebug.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.bluebug).setRegistryName(ModBlocks.bluebug.getRegistryName()));
 		
+		dreamfruit = new ItemFood(2, 0.3F, false).setUnlocalizedName(TheasTree.MODID + ".dreamfruit");
+		reggy.register(dreamfruit.setRegistryName("dreamfruit"));
+		
 		dreamwooddoor = new ItemDreamwoodDoor(ModBlocks.dwDoor);
 		reggy.register(dreamwooddoor);
 		dwDoor.setItemStack(new ItemStack(dreamwooddoor));
@@ -119,6 +128,10 @@ public class ModBlocks
 		bluebug.initModel();
 		
 		dreamwooddoor.initModel();
+		
+		//lazy
+	    ModelLoader.setCustomModelResourceLocation(dreamfruit, 0, new ModelResourceLocation(dreamfruit.getRegistryName(), "inventory"));
+
 	}
 
 }
