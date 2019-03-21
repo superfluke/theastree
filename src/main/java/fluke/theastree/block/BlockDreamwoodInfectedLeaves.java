@@ -1,12 +1,13 @@
 package fluke.theastree.block;
 
 import java.util.List;
+import java.util.Random;
 
 import fluke.theastree.TheasTree;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,18 +21,21 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDreamwoodLeaves extends BlockLeaves
+public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 {
-	public static final String REG_NAME = "dreamwoodleaves";
+	public static final String REG_NAME = "dreamwoodinfectedleaves";
+	public static final PropertyBool INFECTED = PropertyBool.create("infected");
+	private static final int INFECT_DELAY = 5; //infects at a rate of ~ INFECT_DELAY mins
 	
-	public BlockDreamwoodLeaves()
+	public BlockDreamwoodInfectedLeaves()
     {
         super();
-        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
+        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true).withProperty(INFECTED, false));
         setUnlocalizedName(TheasTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
     }
@@ -39,12 +43,12 @@ public class BlockDreamwoodLeaves extends BlockLeaves
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) 
 	{
-		return NonNullList.withSize(1, new ItemStack(this, 1, 0));
+		return NonNullList.withSize(1, new ItemStack(ModBlocks.dwLeaves, 1, 0));
 	}
 	
 	protected ItemStack getSilkTouchDrop(IBlockState state)
     {
-        return new ItemStack(Item.getItemFromBlock(this), 1, 0);
+        return new ItemStack(Item.getItemFromBlock(ModBlocks.dwLeaves), 1, 0);
     }
 
 	@Override
@@ -55,25 +59,36 @@ public class BlockDreamwoodLeaves extends BlockLeaves
 	
 	public int getMetaFromState(IBlockState state)
     {
-        int i = 0;
+        int meta = ((Boolean)state.getValue(INFECTED)).booleanValue() ? 1 : 0;
 
         if (!((Boolean)state.getValue(DECAYABLE)).booleanValue())
         {
-            i |= 4;
+            meta |= 4;
         }
 
         if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue())
         {
-            i |= 8;
+            meta |= 8;
         }
 
-        return i;
+        return meta;
     }
 	
 	public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+        return this.getDefaultState().withProperty(INFECTED, (meta % 2) != 0).withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
     }
+	
+	@Override 
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+	{
+		if(!(Boolean)state.getValue(INFECTED) && rand.nextInt(INFECT_DELAY) == 0)
+		{
+			state = state.withProperty(INFECTED, Boolean.valueOf(true));
+			world.setBlockState(pos, state, 2);
+		}
+		super.updateTick(world, pos, state, rand);
+	}
 	
 	@SideOnly(Side.CLIENT) //TODO fix meeeeeeeeeeeeeeeeeeeeee
 	public void initModel() 
@@ -86,7 +101,7 @@ public class BlockDreamwoodLeaves extends BlockLeaves
 	@Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);
+        return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE, INFECTED);
     }
 	
 	//TODO why dont leaves darken like vanilla?

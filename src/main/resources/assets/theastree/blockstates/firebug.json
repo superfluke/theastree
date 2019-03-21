@@ -16,6 +16,13 @@
       "south": { "model": "theastree:firebug_wall" },
       "west": { "model": "theastree:firebug_wall", "y": 90 },
       "north": { "model": "theastree:firebug_wall", "y": 180 }
+    },
+    "floor_facing": {
+      "up": { "model": "theastree:firebug" },
+      "east": { "model": "theastree:firebug_wall", "y": 270 },
+      "south": { "model": "theastree:firebug_wall" },
+      "west": { "model": "theastree:firebug_wall", "y": 90 },
+      "north": { "model": "theastree:firebug_wall", "y": 180 }
     }
   }
 }

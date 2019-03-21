@@ -16,6 +16,13 @@
       "south": { "model": "theastree:bluebug_wall" },
       "west": { "model": "theastree:bluebug_wall", "y": 90 },
       "north": { "model": "theastree:bluebug_wall", "y": 180 }
+    },
+    "floor_facing": {
+      "up": { "model": "theastree:bluebug" },
+      "east": { "model": "theastree:bluebug_wall", "y": 270 },
+      "south": { "model": "theastree:bluebug_wall" },
+      "west": { "model": "theastree:bluebug_wall", "y": 90 },
+      "north": { "model": "theastree:bluebug_wall", "y": 180 }
     }
   }
 }
