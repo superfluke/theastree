@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "dreamtree:lightbug",
+    "textures": {
+      "particle": "dreamtree:blocks/lightbug"
+    },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "up": { "model": "dreamtree:lightbug" },
+      "east": { "model": "dreamtree:lightbug_wall", "y": 270 },
+      "south": { "model": "dreamtree:lightbug_wall" },
+      "west": { "model": "dreamtree:lightbug_wall", "y": 90 },
+      "north": { "model": "dreamtree:lightbug_wall", "y": 180 }
+    },
+    "floor_facing": {
+      "up": { "model": "dreamtree:lightbug" },
+      "east": { "model": "dreamtree:lightbug_wall", "y": 270 },
+      "south": { "model": "dreamtree:lightbug_wall" },
+      "west": { "model": "dreamtree:lightbug_wall", "y": 90 },
+      "north": { "model": "dreamtree:lightbug_wall", "y": 180 }
+    }
+  }
+}

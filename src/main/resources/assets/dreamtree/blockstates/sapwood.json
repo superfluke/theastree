@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "down": "dreamtree:blocks/sapwood",
+      "up": "dreamtree:blocks/dreamwoodlog",
+      "north": "dreamtree:blocks/dreamwoodlog",
+      "east": "dreamtree:blocks/dreamwoodlog",
+      "south": "dreamtree:blocks/dreamwoodlog",
+      "west": "dreamtree:blocks/dreamwoodlog",
+      "particle": "dreamtree:blocks/dreamwoodlog"
+    },
+    "model": "cube_all",
+    "uvlock": true,
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

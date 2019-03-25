@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "down": "dreamtree:blocks/dreamwoodroot",
+      "up": "dreamtree:blocks/dreamwoodroot",
+      "north": "dreamtree:blocks/menrillog",
+      "east": "dreamtree:blocks/menrillog",
+      "south": "dreamtree:blocks/menrillog",
+      "west": "dreamtree:blocks/menrillog",
+      "particle": "dreamtree:blocks/menrillog"
+    },
+    "model": "cube_all",
+    "uvlock": true,
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}
