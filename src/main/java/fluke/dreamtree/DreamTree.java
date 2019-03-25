@@ -3,6 +3,7 @@ package fluke.dreamtree;
 import org.apache.logging.log4j.Logger;
 
 import fluke.dreamtree.proxy.CommonProxy;
+import fluke.dreamtree.world.WorldTypeDreamTree;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -20,6 +21,7 @@ public class DreamTree
 	public static final String NAME = "Dream Tree";
 	public static final String VERSION = "1.1.0";
 	public static final String DEPENDS = "";
+	public static WorldTypeDreamTree worldTypeDreamTree;
 
 	@Instance(MODID)
 	public static DreamTree instance;
@@ -41,7 +43,8 @@ public class DreamTree
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) 
-	{		
+	{
+		worldTypeDreamTree = new WorldTypeDreamTree();
 	}
 
 	@EventHandler
