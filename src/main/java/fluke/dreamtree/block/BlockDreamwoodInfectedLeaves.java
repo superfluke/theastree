@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import fluke.dreamtree.DreamTree;
+import fluke.dreamtree.config.Configs;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
@@ -30,7 +31,7 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 {
 	public static final String REG_NAME = "dreamwoodinfectedleaves";
 	public static final PropertyBool INFECTED = PropertyBool.create("infected");
-	private static final int INFECT_DELAY = 5; //infects at a rate of ~ INFECT_DELAY mins
+	private static final int INFECT_DELAY = Configs.general.infestationSpeed; //infects at a rate of ~ INFECT_DELAY mins
 	
 	public BlockDreamwoodInfectedLeaves()
     {

@@ -1,6 +1,6 @@
 package fluke.dreamtree.world;
 
-import net.minecraft.init.Biomes;
+import fluke.dreamtree.DreamTree;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeProvider;
@@ -31,7 +31,7 @@ public class WorldTypeDreamTree extends WorldType
 	
 	public BiomeProvider getBiomeProvider(World world)
     {
-        return new BiomeProviderSingle(Biomes.SKY);        
+        return new BiomeProviderSingle(DreamTree.biomeGarden);        
     }
 	
 	@SideOnly(Side.CLIENT)

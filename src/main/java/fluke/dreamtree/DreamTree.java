@@ -2,7 +2,9 @@ package fluke.dreamtree;
 
 import org.apache.logging.log4j.Logger;
 
+import fluke.dreamtree.block.OreDictRegistrar;
 import fluke.dreamtree.proxy.CommonProxy;
+import fluke.dreamtree.world.BiomeAncientGarden;
 import fluke.dreamtree.world.WorldTypeDreamTree;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -12,16 +14,16 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-//TODO oredict for logs/leaves
 @Mod(modid = DreamTree.MODID, name = DreamTree.NAME, version = DreamTree.VERSION, dependencies = DreamTree.DEPENDS)
 public class DreamTree 
 {
 
 	public static final String MODID = "dreamtree";
 	public static final String NAME = "Dream Tree";
-	public static final String VERSION = "1.1.0";
+	public static final String VERSION = "1.2.0";
 	public static final String DEPENDS = "";
 	public static WorldTypeDreamTree worldTypeDreamTree;
+	public static BiomeAncientGarden biomeGarden;
 
 	@Instance(MODID)
 	public static DreamTree instance;
@@ -45,6 +47,8 @@ public class DreamTree
 	public void init(FMLInitializationEvent event) 
 	{
 		worldTypeDreamTree = new WorldTypeDreamTree();
+		OreDictRegistrar.RegisterOreDicts();
+		proxy.init();
 	}
 
 	@EventHandler

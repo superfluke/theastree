@@ -3,8 +3,8 @@ package fluke.dreamtree.block;
 import java.util.List;
 
 import fluke.dreamtree.DreamTree;
+import fluke.dreamtree.config.Configs;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -31,7 +31,7 @@ public class BlockDreamwoodLeaves extends BlockLeaves
 	public BlockDreamwoodLeaves()
     {
         super();
-        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
+        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay));
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
     }
@@ -39,7 +39,7 @@ public class BlockDreamwoodLeaves extends BlockLeaves
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) 
 	{
-		return NonNullList.withSize(1, new ItemStack(this, 1, 0));
+		return NonNullList.withSize(1, new ItemStack(this, 1, 0)); 
 	}
 	
 	protected ItemStack getSilkTouchDrop(IBlockState state)
