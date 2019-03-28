@@ -24,6 +24,14 @@ public class Configs
 		@Config.Comment({"Sap drop speed. Average time of N mins before sap wood produces fluid sap.", "Default: 5"})
 		@Config.RequiresWorldRestart
 		public int sapProductionSpeed = 5;
+		
+		@Config.Comment({"Bush growth speed. Average time of N mins before bushes regrow.", "Default: 5"})
+		@Config.RequiresWorldRestart
+		public int bushGrowthSpeed = 5;
+		
+		@Config.Comment({"Bush block to grow.", "Default: minecraft:deadbush"})
+		@Config.RequiresWorldRestart
+		public String bushBlock = "minecraft:deadbush";
 	}
 
 }

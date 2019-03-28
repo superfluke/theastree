@@ -36,7 +36,7 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 	public BlockDreamwoodInfectedLeaves()
     {
         super();
-        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true).withProperty(INFECTED, false));
+        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay).withProperty(INFECTED, false));
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
     }
@@ -91,7 +91,7 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 		super.updateTick(world, pos, state, rand);
 	}
 	
-	@SideOnly(Side.CLIENT) //TODO fix meeeeeeeeeeeeeeeeeeeeee
+	@SideOnly(Side.CLIENT) 
 	public void initModel() 
 	{
 		IStateMapper mappy = (new StateMap.Builder()).ignore(new IProperty[] { CHECK_DECAY, DECAYABLE }).build();

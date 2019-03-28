@@ -75,7 +75,7 @@ public class BlockDreamwoodLeaves extends BlockLeaves
         return this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
     }
 	
-	@SideOnly(Side.CLIENT) //TODO fix meeeeeeeeeeeeeeeeeeeeee
+	@SideOnly(Side.CLIENT) 
 	public void initModel() 
 	{
 		IStateMapper mappy = (new StateMap.Builder()).ignore(new IProperty[] { CHECK_DECAY, DECAYABLE }).build();
@@ -89,7 +89,6 @@ public class BlockDreamwoodLeaves extends BlockLeaves
         return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);
     }
 	
-	//TODO why dont leaves darken like vanilla?
 	@Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer()

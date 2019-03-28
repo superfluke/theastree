@@ -2,6 +2,7 @@ package fluke.dreamtree;
 
 import org.apache.logging.log4j.Logger;
 
+import fluke.dreamtree.block.BlockDreamwoodBushLeaves;
 import fluke.dreamtree.block.OreDictRegistrar;
 import fluke.dreamtree.proxy.CommonProxy;
 import fluke.dreamtree.world.BiomeAncientGarden;
@@ -54,5 +55,6 @@ public class DreamTree
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) 
 	{
+		BlockDreamwoodBushLeaves.setBushBlock();
 	}
 }
