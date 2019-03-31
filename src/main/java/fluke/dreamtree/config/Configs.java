@@ -32,6 +32,14 @@ public class Configs
 		@Config.Comment({"Bush block to grow.", "Default: minecraft:deadbush"})
 		@Config.RequiresWorldRestart
 		public String bushBlock = "minecraft:deadbush";
+		
+		@Config.Comment({"Grass color", "Default: 3CC619"})
+		@Config.RequiresWorldRestart
+		public String grassColor = "3CC619";
+		
+		@Config.Comment({"Foliage color", "Default: 23A003"})
+		@Config.RequiresWorldRestart
+		public String foliageColor = "23A003";
 	}
 
 }

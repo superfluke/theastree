@@ -14,6 +14,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -105,7 +106,6 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
         return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE, INFECTED);
     }
 	
-	//TODO why dont leaves darken like vanilla?
 	@Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer()
@@ -124,6 +124,12 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
     public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side)
     {
         return Blocks.LEAVES.shouldSideBeRendered(state, world, pos, side);
+    }
+    
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    {
+    	worldIn.setBlockState(pos, this.getDefaultState());
     }
 
 }
