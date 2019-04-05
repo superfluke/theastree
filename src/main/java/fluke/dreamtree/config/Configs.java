@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = DreamTree.MODID)
 public class Configs
 {
-	
+	//TODO reset sap/bush blocks on config change
 	public static ConfigGeneral general = new ConfigGeneral();
 	
 	public static class ConfigGeneral
@@ -25,6 +25,10 @@ public class Configs
 		@Config.RequiresWorldRestart
 		public int sapProductionSpeed = 5;
 		
+		@Config.Comment({"Sap block to drop.", "Default: minecraft:flowing_water"})
+		@Config.RequiresWorldRestart
+		public String sapBlock = "minecraft:flowing_water";
+		
 		@Config.Comment({"Bush growth speed. Average time of N mins before bushes regrow.", "Default: 5"})
 		@Config.RequiresWorldRestart
 		public int bushGrowthSpeed = 5;
@@ -33,11 +37,11 @@ public class Configs
 		@Config.RequiresWorldRestart
 		public String bushBlock = "minecraft:deadbush";
 		
-		@Config.Comment({"Grass color", "Default: 3CC619"})
+		@Config.Comment({"Grass color in Acient Garden biome", "Default: 3CC619"})
 		@Config.RequiresWorldRestart
 		public String grassColor = "3CC619";
 		
-		@Config.Comment({"Foliage color", "Default: 23A003"})
+		@Config.Comment({"Foliage color in Acient Garden biome", "Default: 23A003"})
 		@Config.RequiresWorldRestart
 		public String foliageColor = "23A003";
 	}

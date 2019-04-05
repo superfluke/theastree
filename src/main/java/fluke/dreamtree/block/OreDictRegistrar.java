@@ -14,7 +14,9 @@ public class OreDictRegistrar
 		OreDictionary.registerOre("logWood", ModBlocks.dwLog);
 		OreDictionary.registerOre("torch", ModBlocks.dwTorch);
 		OreDictionary.registerOre("doorWood", ModBlocks.dreamwooddoor);
+		OreDictionary.registerOre("slabWood", ModBlocks.dwSlabHalf);
 		OreDictionary.registerOre("treeLeaves", ModBlocks.dwLeaves);
+		OreDictionary.registerOre("treeLeaves", ModBlocks.dwFloweringLeaves);
 	}
 
 }

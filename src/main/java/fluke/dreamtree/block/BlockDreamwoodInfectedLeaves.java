@@ -37,7 +37,7 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 	public BlockDreamwoodInfectedLeaves()
     {
         super();
-        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay).withProperty(INFECTED, false));
+        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay).withProperty(INFECTED, true));
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
     }

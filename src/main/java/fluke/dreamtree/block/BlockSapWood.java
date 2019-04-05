@@ -4,6 +4,7 @@ import java.util.Random;
 
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.config.Configs;
+import fluke.dreamtree.util.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -23,6 +24,7 @@ public class BlockSapWood extends Block
 	public static final String REG_NAME = "sapwood";
 	private static final int SAP_REGEN_SPEED = Configs.general.sapProductionSpeed; 
 	private static final IBlockState AIR = Blocks.AIR.getDefaultState();
+	private static IBlockState sapBlock;
 	
 	public BlockSapWood()
 	{
@@ -35,6 +37,14 @@ public class BlockSapWood extends Block
 		setRegistryName(REG_NAME);
 	}
 	
+	//make sure all other mods are loaded before trying to set this
+	public static void setSapBlock()
+	{
+		sapBlock = BlockUtil.getStateFromString(Configs.general.sapBlock);
+		if(sapBlock == null)
+			DreamTree.logger.error("Cannot find block: " + Configs.general.sapBlock);
+	}
+		
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
         if (worldIn.isAreaLoaded(pos.add(-5, -5, -5), pos.add(5, 5, 5)))
@@ -58,8 +68,7 @@ public class BlockSapWood extends Block
 			IBlockState below = world.getBlockState(pos.down());
 			if(below == AIR)
 			{
-				//TODO change to sap fluid
-				world.setBlockState(pos.down(), Blocks.FLOWING_WATER.getDefaultState());
+				world.setBlockState(pos.down(), sapBlock);
 			}
 			
 		}

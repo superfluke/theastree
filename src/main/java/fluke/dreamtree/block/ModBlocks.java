@@ -3,6 +3,7 @@ package fluke.dreamtree.block;
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.item.ItemDreamwoodDoor;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -34,6 +35,9 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockDreamwoodLeaves.REG_NAME)
     public static BlockDreamwoodLeaves dwLeaves;
 	
+	@GameRegistry.ObjectHolder(BlockDreamwoodLeavesFlowering.REG_NAME)
+    public static BlockDreamwoodLeavesFlowering dwFloweringLeaves;
+	
 	@GameRegistry.ObjectHolder(BlockDreamwoodInfectedLeaves.REG_NAME)
     public static BlockDreamwoodInfectedLeaves dwInfectedLeaves;
 	
@@ -48,6 +52,15 @@ public class ModBlocks
 	
 	@GameRegistry.ObjectHolder(BlockDreamwoodTrapdoor.REG_NAME)
     public static BlockDreamwoodTrapdoor dwTrapdoor;
+	
+	@GameRegistry.ObjectHolder(BlockDreamwoodStairs.REG_NAME)
+    public static BlockDreamwoodStairs dwStairs;
+	
+	@GameRegistry.ObjectHolder(BlockHalfDreamwoodSlab.REG_NAME)
+    public static BlockHalfDreamwoodSlab dwSlabHalf;
+	
+	@GameRegistry.ObjectHolder(BlockDoubleDreamwoodSlab.REG_NAME)
+    public static BlockDoubleDreamwoodSlab dwSlabDouble;
 	
 	@GameRegistry.ObjectHolder(BlockHeartWood.REG_NAME)
     public static BlockHeartWood heartwood;
@@ -80,11 +93,15 @@ public class ModBlocks
 		reggy.register(new BlockDreamwoodRoot());
 		reggy.register(new BlockDreamwoodLog());
 		reggy.register(new BlockDreamwoodLeaves());
+		reggy.register(new BlockDreamwoodLeavesFlowering());
 		reggy.register(new BlockDreamwoodInfectedLeaves());
 		reggy.register(new BlockDreamwoodBushLeaves());
 		reggy.register(new BlockDreamwoodTorch());
 		reggy.register(new BlockDreamwoodDoor());
 		reggy.register(new BlockDreamwoodTrapdoor());
+		reggy.register(new BlockDreamwoodStairs());
+		reggy.register(new BlockHalfDreamwoodSlab());
+		reggy.register(new BlockDoubleDreamwoodSlab());
 		reggy.register(new BlockHeartWood());
 		reggy.register(new BlockSapWood());
 		reggy.register(new BlockBurlWood());
@@ -101,10 +118,13 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.dwRoot).setRegistryName(ModBlocks.dwRoot.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLog).setRegistryName(ModBlocks.dwLog.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLeaves).setRegistryName(ModBlocks.dwLeaves.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.dwFloweringLeaves).setRegistryName(ModBlocks.dwFloweringLeaves.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwInfectedLeaves).setRegistryName(ModBlocks.dwInfectedLeaves.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwBushLeaves).setRegistryName(ModBlocks.dwBushLeaves.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwTorch).setRegistryName(ModBlocks.dwTorch.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwTrapdoor).setRegistryName(ModBlocks.dwTrapdoor.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.dwStairs).setRegistryName(ModBlocks.dwStairs.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.dwSlabHalf).setRegistryName(ModBlocks.dwSlabHalf.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.heartwood).setRegistryName(ModBlocks.heartwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.sapwood).setRegistryName(ModBlocks.sapwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.burlwood).setRegistryName(ModBlocks.burlwood.getRegistryName()));
@@ -127,11 +147,14 @@ public class ModBlocks
 		dwRoot.initModel();
 		dwLog.initModel();
 		dwLeaves.initModel();
+		dwFloweringLeaves.initModel();
 		dwInfectedLeaves.initModel();
 		dwBushLeaves.initModel();
 		dwTorch.initModel();
 		dwDoor.initModel();
 		dwTrapdoor.initModel();
+		dwStairs.initModel();
+		dwSlabHalf.initModel();
 		heartwood.initModel();
 		sapwood.initModel();
 		burlwood.initModel();

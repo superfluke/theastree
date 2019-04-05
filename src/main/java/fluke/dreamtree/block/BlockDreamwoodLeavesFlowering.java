@@ -1,11 +1,9 @@
 package fluke.dreamtree.block;
 
 import java.util.List;
-import java.util.Random;
 
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.config.Configs;
-import fluke.dreamtree.util.BlockUtil;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
@@ -28,51 +26,26 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDreamwoodBushLeaves extends BlockLeaves
+public class BlockDreamwoodLeavesFlowering extends BlockLeaves
 {
-	public static final String REG_NAME = "dreamwoodbushleaves";
-	private static final int GROWTH_DELAY = Configs.general.bushGrowthSpeed;
-	private static final IBlockState AIR = Blocks.AIR.getDefaultState();
-	private static IBlockState bushBlock;
+public static final String REG_NAME = "dreamwoodleavesflowering";
 	
-	public BlockDreamwoodBushLeaves()
+	public BlockDreamwoodLeavesFlowering()
     {
         super();
-        this.setTickRandomly(true);
         this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay));
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
     }
-	
-	//make sure all other mods are loaded before trying to set this
-	public static void setBushBlock()
-	{
-		bushBlock = BlockUtil.getStateFromString(Configs.general.bushBlock);
-		if(bushBlock == null)
-			DreamTree.logger.error("Cannot find block: " + Configs.general.bushBlock);
-	}
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if(rand.nextInt(GROWTH_DELAY) == 0)
-		{	
-			IBlockState below = world.getBlockState(pos.down());
-			if(below == AIR)
-			{
-				world.setBlockState(pos.down(), bushBlock);
-			}
-			
-		}
-	}
-
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) 
 	{
-		return NonNullList.withSize(1, new ItemStack(ModBlocks.dwLeaves, 1, 0)); 
+		return NonNullList.withSize(1, new ItemStack(this, 1, 0)); 
 	}
 	
 	protected ItemStack getSilkTouchDrop(IBlockState state)
     {
-        return new ItemStack(Item.getItemFromBlock(ModBlocks.dwLeaves), 1, 0);
+        return new ItemStack(Item.getItemFromBlock(this), 1, 0);
     }
 
 	@Override
@@ -142,4 +115,5 @@ public class BlockDreamwoodBushLeaves extends BlockLeaves
     {
     	worldIn.setBlockState(pos, this.getDefaultState());
     }
+
 }
