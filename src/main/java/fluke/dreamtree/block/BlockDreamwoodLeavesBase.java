@@ -8,7 +8,6 @@ import fluke.dreamtree.config.Configs;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -28,24 +27,18 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockDreamwoodInfectedLeaves extends BlockLeaves
+public abstract class BlockDreamwoodLeavesBase extends BlockLeaves
 {
-	public static final String REG_NAME = "dreamwoodinfectedleaves";
-	public static final PropertyBool INFECTED = PropertyBool.create("infected");
-	private static final int INFECT_DELAY = Configs.general.infestationSpeed; //infects at a rate of ~ INFECT_DELAY mins
-	
-	public BlockDreamwoodInfectedLeaves()
+	public BlockDreamwoodLeavesBase()
     {
         super();
-        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay).withProperty(INFECTED, true));
-        setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
-		setRegistryName(REG_NAME);
+        this.setDefaultState(blockState.getBaseState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, Configs.general.doLeavesDecay));
     }
 
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) 
 	{
-		return NonNullList.withSize(1, new ItemStack(ModBlocks.dwLeaves, 1, 0));
+		return NonNullList.withSize(1, new ItemStack(ModBlocks.dwLeaves, 1, 0)); 
 	}
 	
 	protected ItemStack getSilkTouchDrop(IBlockState state)
@@ -61,36 +54,25 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 	
 	public int getMetaFromState(IBlockState state)
     {
-        int meta = ((Boolean)state.getValue(INFECTED)).booleanValue() ? 1 : 0;
+        int i = 0;
 
         if (!((Boolean)state.getValue(DECAYABLE)).booleanValue())
         {
-            meta |= 4;
+            i |= 4;
         }
 
         if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue())
         {
-            meta |= 8;
+            i |= 8;
         }
 
-        return meta;
+        return i;
     }
 	
 	public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(INFECTED, (meta % 2) != 0).withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+        return this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
     }
-	
-	@Override 
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if(!(Boolean)state.getValue(INFECTED) && rand.nextInt(INFECT_DELAY) == 0)
-		{
-			state = state.withProperty(INFECTED, Boolean.valueOf(true));
-			world.setBlockState(pos, state, 2);
-		}
-		super.updateTick(world, pos, state, rand);
-	}
 	
 	@SideOnly(Side.CLIENT) 
 	public void initModel() 
@@ -103,7 +85,7 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
 	@Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE, INFECTED);
+        return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);
     }
 	
 	@Override
@@ -130,6 +112,12 @@ public class BlockDreamwoodInfectedLeaves extends BlockLeaves
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
     	worldIn.setBlockState(pos, this.getDefaultState());
+    }
+    
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return null;
     }
 
 }

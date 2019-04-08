@@ -11,8 +11,8 @@
   "variants": {
     "normal": [{}],
     "inventory": [{}],
-    "infected": {
-        "true": { "textures": { "all": "dreamtree:blocks/dreamwoodinfectedleaves" } },
+    "infested": {
+        "true": { "textures": { "all": "dreamtree:blocks/dreamwoodleavesinfested" } },
         "false": { "textures": { "all": "dreamtree:blocks/dreamwoodleaves" } }
     }
   }

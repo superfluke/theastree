@@ -8,6 +8,8 @@ public class BiomeAncientGarden extends Biome
 {
 	//TODO spawnlist for mobs?
 	public static BiomeProperties properties = new BiomeProperties("Ancient Garden");
+	public static int grassColor;
+	public static int foliageColor;
 	
 	static
 	{
@@ -18,18 +20,25 @@ public class BiomeAncientGarden extends Biome
 	public BiomeAncientGarden()
 	{
 		super(properties);
+		updateBiomeConfigs();
+	}
+	
+	public static void updateBiomeConfigs()
+	{
+		grassColor = colorFromText(Configs.general.grassColor);
+		foliageColor = colorFromText(Configs.general.foliageColor);	
 	}
 	
 	@Override
 	public int getModdedBiomeGrassColor(int original) 
 	{
-		return super.getModdedBiomeGrassColor(colorFromText(Configs.general.grassColor));
+		return super.getModdedBiomeGrassColor(grassColor);
 	}
 	
 	@Override
 	public int getModdedBiomeFoliageColor(int original) 
 	{
-		return super.getModdedBiomeFoliageColor(colorFromText(Configs.general.foliageColor));
+		return super.getModdedBiomeFoliageColor(foliageColor);
 	}
 	
 	public static int colorFromText(String text)

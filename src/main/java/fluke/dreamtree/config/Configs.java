@@ -1,49 +1,90 @@
 package fluke.dreamtree.config;
 
+import java.util.Arrays;
+
 import fluke.dreamtree.DreamTree;
+import fluke.dreamtree.block.BlockDreamwoodBushLeaves;
+import fluke.dreamtree.block.BlockSapWood;
+import fluke.dreamtree.util.BlockUtil;
+import fluke.dreamtree.util.WeightedList;
+import fluke.dreamtree.world.BiomeAncientGarden;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.Config.Ignore;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Config(modid = DreamTree.MODID, category = "")
 @Mod.EventBusSubscriber(modid = DreamTree.MODID)
 public class Configs
 {
-	//TODO reset sap/bush blocks on config change
 	public static ConfigGeneral general = new ConfigGeneral();
+	
+	@Ignore
+	public static WeightedList weightedSapBlockList;
+	@Ignore
+	public static WeightedList weightedBushBlockList;
 	
 	public static class ConfigGeneral
 	{
 		@Config.Comment({"If dreamwood leaves can naturally decay", "Default: false"})
-		@Config.RequiresWorldRestart
+		@Config.RequiresMcRestart
 		public boolean doLeavesDecay = false;
 		
 		@Config.Comment({"Infested leaves regeneration speed. Average regen in N mins.", "Default: 5"})
-		@Config.RequiresWorldRestart
 		public int infestationSpeed = 5;
 		
 		@Config.Comment({"Sap drop speed. Average time of N mins before sap wood produces fluid sap.", "Default: 5"})
-		@Config.RequiresWorldRestart
 		public int sapProductionSpeed = 5;
 		
-		@Config.Comment({"Sap block to drop.", "Default: minecraft:flowing_water"})
-		@Config.RequiresWorldRestart
-		public String sapBlock = "minecraft:flowing_water";
-		
 		@Config.Comment({"Bush growth speed. Average time of N mins before bushes regrow.", "Default: 5"})
-		@Config.RequiresWorldRestart
 		public int bushGrowthSpeed = 5;
 		
-		@Config.Comment({"Bush block to grow.", "Default: minecraft:deadbush"})
-		@Config.RequiresWorldRestart
-		public String bushBlock = "minecraft:deadbush";
-		
 		@Config.Comment({"Grass color in Acient Garden biome", "Default: 3CC619"})
-		@Config.RequiresWorldRestart
 		public String grassColor = "3CC619";
 		
 		@Config.Comment({"Foliage color in Acient Garden biome", "Default: 23A003"})
-		@Config.RequiresWorldRestart
 		public String foliageColor = "23A003";
+		
+		@Config.Comment({"Weighted list of blocks that may spawn under sap wood. Format is: [weight]-modid:blockname:meta"})
+		public String[] sapBlockList = { "15-minecraft:flowing_water", "10-minecraft:log", "5-minecraft:flowing_lava" };
+		
+		@Config.Comment({"Weighted list of blocks that may spawn under bush producing leaves. Format is: [weight]-modid:blockname:meta"})
+		public String[] bushBlockList = { "15-minecraft:deadbush", "10-minecraft:tallgrass:2", "5-minecraft:cactus" };
 	}
-
+	
+	@Mod.EventBusSubscriber(modid = DreamTree.MODID)
+	private static class ConfigEventHandler 
+	{
+		@SubscribeEvent
+		public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent ev) 
+		{
+			if (ev.getModID().equals(DreamTree.MODID)) 
+			{
+				ConfigManager.sync(DreamTree.MODID, Config.Type.INSTANCE);
+				BiomeAncientGarden.updateBiomeConfigs();
+				BlockSapWood.setSapBlockConfigs();
+				BlockDreamwoodBushLeaves.setBushBlockConfigs();
+				updateWeightedLists();
+			}
+		}
+	}
+	
+	public static void updateWeightedLists()
+	{
+		weightedSapBlockList = new WeightedList();
+		for(String s : Configs.general.sapBlockList)
+		{
+			String[] splitty = s.split("-");
+			weightedSapBlockList.add(BlockUtil.getStateFromString(splitty[1].trim()), Integer.parseInt(splitty[0]));
+		}
+		
+		weightedBushBlockList = new WeightedList();
+		for(String s : Configs.general.bushBlockList)
+		{
+			String[] splitty = s.split("-");
+			weightedBushBlockList.add(BlockUtil.getStateFromString(splitty[1].trim()), Integer.parseInt(splitty[0]));
+		}
+	}
 }

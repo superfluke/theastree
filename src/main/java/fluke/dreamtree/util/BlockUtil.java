@@ -1,5 +1,7 @@
 package fluke.dreamtree.util;
 
+import fluke.dreamtree.DreamTree;
+import fluke.dreamtree.config.Configs;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 
@@ -11,16 +13,21 @@ public class BlockUtil
 	{
 		String[] splitty = block.split(":");
 		Block blocky;
+		IBlockState out;
 		if(splitty.length > 2)
 		{
 			blocky = Block.getBlockFromName(splitty[0] + ":" + splitty[1]);
-			return blocky==null? null : blocky.getStateFromMeta(Integer.valueOf(splitty[2]));
+			out = (blocky==null)? null : blocky.getStateFromMeta(Integer.valueOf(splitty[2]));
 		}
 		else
 		{
 			blocky = Block.getBlockFromName(block);
-			return blocky==null? null : blocky.getDefaultState();
+			out = (blocky==null)? null : blocky.getDefaultState();
 		}
+		
+		if(out == null)
+			DreamTree.logger.error("Cannot find block: " + block);
+		return out;
 	}
 
 }

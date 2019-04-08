@@ -16,6 +16,8 @@ public class ChunkGeneratorDreamTree implements IChunkGenerator
 {
 	private final World world;
 	private static final IBlockState STONE = Blocks.STONE.getDefaultState();
+	private static final IBlockState DIRT = Blocks.DIRT.getDefaultState();
+	private static final IBlockState GRASS = Blocks.GRASS.getDefaultState();
 	
 	public ChunkGeneratorDreamTree(final World world)
 	{
@@ -37,8 +39,21 @@ public class ChunkGeneratorDreamTree implements IChunkGenerator
 		if(Math.abs(chunkX) <= 1 && Math.abs(chunkZ) <= 1)
 		{
 			for(int x = 0; x < 16; x++)
+			{
+				int realX = x + chunkX * 16;
 				for(int z = 0; z < 16; z++)
-					primer.setBlockState(x, 60, z, STONE);
+				{
+					int realZ = z + chunkZ * 16;
+					for(int y = 1; y < 11; y++)
+					{
+						IBlockState statey = (y == 10)? GRASS : DIRT;
+						BlockPos p = new BlockPos(realX, y, realZ);
+						if(p.getDistance(0, 10, 0) <= 7.9)
+							primer.setBlockState(x, y, z, statey);
+							
+					}				
+				}
+			}
 		}
     }
 

@@ -21,10 +21,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockSapWood extends Block 
 {
-	public static final String REG_NAME = "sapwood";
-	private static final int SAP_REGEN_SPEED = Configs.general.sapProductionSpeed; 
+	public static final String REG_NAME = "sapwood";	
 	private static final IBlockState AIR = Blocks.AIR.getDefaultState();
-	private static IBlockState sapBlock;
+	private static int sapRegenSpeed; 
 	
 	public BlockSapWood()
 	{
@@ -37,12 +36,9 @@ public class BlockSapWood extends Block
 		setRegistryName(REG_NAME);
 	}
 	
-	//make sure all other mods are loaded before trying to set this
-	public static void setSapBlock()
+	public static void setSapBlockConfigs()
 	{
-		sapBlock = BlockUtil.getStateFromString(Configs.general.sapBlock);
-		if(sapBlock == null)
-			DreamTree.logger.error("Cannot find block: " + Configs.general.sapBlock);
+		sapRegenSpeed = Configs.general.sapProductionSpeed;
 	}
 		
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
@@ -63,12 +59,16 @@ public class BlockSapWood extends Block
 	
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		if(rand.nextInt(SAP_REGEN_SPEED) == 0)
+		if(rand.nextInt(sapRegenSpeed) == 0)
 		{
-			IBlockState below = world.getBlockState(pos.down());
-			if(below == AIR)
+			if(Configs.weightedSapBlockList != null)
 			{
-				world.setBlockState(pos.down(), sapBlock);
+				IBlockState below = world.getBlockState(pos.down());
+				if(below == AIR)
+				{
+					IBlockState sappy = Configs.weightedSapBlockList.selectRandom();
+					world.setBlockState(pos.down(), sappy);
+				}
 			}
 			
 		}

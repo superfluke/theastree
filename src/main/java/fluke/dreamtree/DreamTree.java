@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import fluke.dreamtree.block.BlockDreamwoodBushLeaves;
 import fluke.dreamtree.block.BlockSapWood;
 import fluke.dreamtree.block.OreDictRegistrar;
+import fluke.dreamtree.config.Configs;
 import fluke.dreamtree.proxy.CommonProxy;
 import fluke.dreamtree.world.BiomeAncientGarden;
 import fluke.dreamtree.world.WorldTypeDreamTree;
@@ -22,7 +23,7 @@ public class DreamTree
 
 	public static final String MODID = "dreamtree";
 	public static final String NAME = "Dream Tree";
-	public static final String VERSION = "0.3.0";
+	public static final String VERSION = "0.4.1";
 	public static final String DEPENDS = "";
 	public static WorldTypeDreamTree worldTypeDreamTree;
 	public static BiomeAncientGarden biomeGarden;
@@ -56,7 +57,8 @@ public class DreamTree
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) 
 	{
-		BlockDreamwoodBushLeaves.setBushBlock();
-		BlockSapWood.setSapBlock();
+		BlockDreamwoodBushLeaves.setBushBlockConfigs();
+		BlockSapWood.setSapBlockConfigs();
+		Configs.updateWeightedLists();
 	}
 }

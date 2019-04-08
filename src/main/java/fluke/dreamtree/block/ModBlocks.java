@@ -3,7 +3,6 @@ package fluke.dreamtree.block;
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.item.ItemDreamwoodDoor;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockStairs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -38,8 +37,8 @@ public class ModBlocks
 	@GameRegistry.ObjectHolder(BlockDreamwoodLeavesFlowering.REG_NAME)
     public static BlockDreamwoodLeavesFlowering dwFloweringLeaves;
 	
-	@GameRegistry.ObjectHolder(BlockDreamwoodInfectedLeaves.REG_NAME)
-    public static BlockDreamwoodInfectedLeaves dwInfectedLeaves;
+	@GameRegistry.ObjectHolder(BlockDreamwoodInfestedLeaves.REG_NAME)
+    public static BlockDreamwoodInfestedLeaves dwInfestedLeaves;
 	
 	@GameRegistry.ObjectHolder(BlockDreamwoodBushLeaves.REG_NAME)
     public static BlockDreamwoodBushLeaves dwBushLeaves;
@@ -94,7 +93,7 @@ public class ModBlocks
 		reggy.register(new BlockDreamwoodLog());
 		reggy.register(new BlockDreamwoodLeaves());
 		reggy.register(new BlockDreamwoodLeavesFlowering());
-		reggy.register(new BlockDreamwoodInfectedLeaves());
+		reggy.register(new BlockDreamwoodInfestedLeaves());
 		reggy.register(new BlockDreamwoodBushLeaves());
 		reggy.register(new BlockDreamwoodTorch());
 		reggy.register(new BlockDreamwoodDoor());
@@ -119,7 +118,7 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.dwLog).setRegistryName(ModBlocks.dwLog.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwLeaves).setRegistryName(ModBlocks.dwLeaves.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwFloweringLeaves).setRegistryName(ModBlocks.dwFloweringLeaves.getRegistryName()));
-		reggy.register(new ItemBlock(ModBlocks.dwInfectedLeaves).setRegistryName(ModBlocks.dwInfectedLeaves.getRegistryName()));
+		reggy.register(new ItemBlock(ModBlocks.dwInfestedLeaves).setRegistryName(ModBlocks.dwInfestedLeaves.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwBushLeaves).setRegistryName(ModBlocks.dwBushLeaves.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwTorch).setRegistryName(ModBlocks.dwTorch.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwTrapdoor).setRegistryName(ModBlocks.dwTrapdoor.getRegistryName()));
@@ -148,7 +147,7 @@ public class ModBlocks
 		dwLog.initModel();
 		dwLeaves.initModel();
 		dwFloweringLeaves.initModel();
-		dwInfectedLeaves.initModel();
+		dwInfestedLeaves.initModel();
 		dwBushLeaves.initModel();
 		dwTorch.initModel();
 		dwDoor.initModel();

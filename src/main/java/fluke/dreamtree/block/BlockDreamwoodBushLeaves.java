@@ -31,9 +31,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockDreamwoodBushLeaves extends BlockLeaves
 {
 	public static final String REG_NAME = "dreamwoodbushleaves";
-	private static final int GROWTH_DELAY = Configs.general.bushGrowthSpeed;
 	private static final IBlockState AIR = Blocks.AIR.getDefaultState();
-	private static IBlockState bushBlock;
+	private static int growthDelay;
 	
 	public BlockDreamwoodBushLeaves()
     {
@@ -44,21 +43,23 @@ public class BlockDreamwoodBushLeaves extends BlockLeaves
 		setRegistryName(REG_NAME);
     }
 	
-	//make sure all other mods are loaded before trying to set this
-	public static void setBushBlock()
+	public static void setBushBlockConfigs()
 	{
-		bushBlock = BlockUtil.getStateFromString(Configs.general.bushBlock);
-		if(bushBlock == null)
-			DreamTree.logger.error("Cannot find block: " + Configs.general.bushBlock);
+		growthDelay = Configs.general.bushGrowthSpeed;
 	}
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		if(rand.nextInt(GROWTH_DELAY) == 0)
+		
+		if(rand.nextInt(growthDelay) == 0)
 		{	
-			IBlockState below = world.getBlockState(pos.down());
-			if(below == AIR)
+			if(Configs.weightedBushBlockList != null)
 			{
-				world.setBlockState(pos.down(), bushBlock);
+				IBlockState below = world.getBlockState(pos.down());
+				if(below == AIR)
+				{
+					IBlockState bushy = Configs.weightedBushBlockList.selectRandom();
+					world.setBlockState(pos.down(), bushy);
+				}
 			}
 			
 		}
