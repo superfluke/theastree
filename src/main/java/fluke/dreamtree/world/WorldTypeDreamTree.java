@@ -39,5 +39,11 @@ public class WorldTypeDreamTree extends WorldType
     {
         return "Dream Tree";
     }
+	
+	@Override
+    public double getHorizon(World world) 
+	{
+        return 0;
+    }
 
 }

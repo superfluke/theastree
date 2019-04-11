@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class Configs
 {
 	public static ConfigGeneral general = new ConfigGeneral();
+	public static ConfigDreamTreeWorld dreamTreeWorld = new ConfigDreamTreeWorld();
 	
 	@Ignore
 	public static WeightedList weightedSapBlockList;
@@ -41,17 +42,23 @@ public class Configs
 		@Config.Comment({"Bush growth speed. Average time of N mins before bushes regrow.", "Default: 5"})
 		public int bushGrowthSpeed = 5;
 		
+		@Config.Comment({"Weighted list of blocks that may spawn under sap wood. Format is: [weight]-modid:blockname:meta"})
+		public String[] sapBlockList = { "15-minecraft:flowing_water", "10-minecraft:log", "5-minecraft:flowing_lava" };
+		
+		@Config.Comment({"Weighted list of blocks that may spawn under bush producing leaves. Format is: [weight]-modid:blockname:meta"})
+		public String[] bushBlockList = { "15-minecraft:deadbush", "10-minecraft:tallgrass:2", "5-minecraft:cactus" };
+	}
+	
+	public static class ConfigDreamTreeWorld
+	{
 		@Config.Comment({"Grass color in Acient Garden biome", "Default: 3CC619"})
 		public String grassColor = "3CC619";
 		
 		@Config.Comment({"Foliage color in Acient Garden biome", "Default: 23A003"})
 		public String foliageColor = "23A003";
 		
-		@Config.Comment({"Weighted list of blocks that may spawn under sap wood. Format is: [weight]-modid:blockname:meta"})
-		public String[] sapBlockList = { "15-minecraft:flowing_water", "10-minecraft:log", "5-minecraft:flowing_lava" };
-		
-		@Config.Comment({"Weighted list of blocks that may spawn under bush producing leaves. Format is: [weight]-modid:blockname:meta"})
-		public String[] bushBlockList = { "15-minecraft:deadbush", "10-minecraft:tallgrass:2", "5-minecraft:cactus" };
+		@Config.Comment({"Sky color in Acient Garden biome", "Default: FFA500"})
+		public String skyColor = "FFA500";
 	}
 	
 	@Mod.EventBusSubscriber(modid = DreamTree.MODID)

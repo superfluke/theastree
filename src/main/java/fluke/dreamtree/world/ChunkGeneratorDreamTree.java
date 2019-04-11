@@ -15,7 +15,6 @@ import net.minecraft.world.gen.IChunkGenerator;
 public class ChunkGeneratorDreamTree implements IChunkGenerator
 {
 	private final World world;
-	private static final IBlockState STONE = Blocks.STONE.getDefaultState();
 	private static final IBlockState DIRT = Blocks.DIRT.getDefaultState();
 	private static final IBlockState GRASS = Blocks.GRASS.getDefaultState();
 	
@@ -28,6 +27,7 @@ public class ChunkGeneratorDreamTree implements IChunkGenerator
 	public Chunk generateChunk(int x, int z)
 	{
 		ChunkPrimer chunkprimer = new ChunkPrimer();
+		//world.setSeaLevel(60);
 		this.generateTerrain(x, z, chunkprimer);
 		Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
 		chunk.generateSkylightMap();

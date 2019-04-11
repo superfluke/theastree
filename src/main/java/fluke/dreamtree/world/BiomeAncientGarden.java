@@ -2,7 +2,10 @@ package fluke.dreamtree.world;
 
 import fluke.dreamtree.config.Configs;
 import net.minecraft.init.Biomes;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BiomeAncientGarden extends Biome
 {
@@ -10,6 +13,7 @@ public class BiomeAncientGarden extends Biome
 	public static BiomeProperties properties = new BiomeProperties("Ancient Garden");
 	public static int grassColor;
 	public static int foliageColor;
+	public static int skyColor;
 	
 	static
 	{
@@ -25,8 +29,9 @@ public class BiomeAncientGarden extends Biome
 	
 	public static void updateBiomeConfigs()
 	{
-		grassColor = colorFromText(Configs.general.grassColor);
-		foliageColor = colorFromText(Configs.general.foliageColor);	
+		grassColor = colorFromText(Configs.dreamTreeWorld.grassColor);
+		foliageColor = colorFromText(Configs.dreamTreeWorld.foliageColor);
+		skyColor = colorFromText(Configs.dreamTreeWorld.skyColor);
 	}
 	
 	@Override
@@ -40,6 +45,12 @@ public class BiomeAncientGarden extends Biome
 	{
 		return super.getModdedBiomeFoliageColor(foliageColor);
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public int getSkyColorByTemp(float currentTemperature)
+    {
+		return skyColor;
+    }
 	
 	public static int colorFromText(String text)
 	{
