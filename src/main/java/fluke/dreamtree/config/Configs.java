@@ -1,13 +1,14 @@
 package fluke.dreamtree.config;
 
-import java.util.Arrays;
-
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.block.BlockDreamwoodBushLeaves;
+import fluke.dreamtree.block.BlockDreamwoodInfestedLeaves;
 import fluke.dreamtree.block.BlockSapWood;
 import fluke.dreamtree.util.BlockUtil;
 import fluke.dreamtree.util.WeightedList;
 import fluke.dreamtree.world.BiomeAncientGarden;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Ignore;
 import net.minecraftforge.common.config.ConfigManager;
@@ -23,9 +24,11 @@ public class Configs
 	public static ConfigDreamTreeWorld dreamTreeWorld = new ConfigDreamTreeWorld();
 	
 	@Ignore
-	public static WeightedList weightedSapBlockList;
+	public static WeightedList<IBlockState> weightedSapBlockList;
 	@Ignore
-	public static WeightedList weightedBushBlockList;
+	public static WeightedList<IBlockState> weightedBushBlockList;
+	@Ignore
+	public static WeightedList<ItemStack> weightedInfestedDrops;
 	
 	public static class ConfigGeneral
 	{
@@ -47,6 +50,12 @@ public class Configs
 		
 		@Config.Comment({"Weighted list of blocks that may spawn under bush producing leaves. Format is: [weight]-modid:blockname:meta"})
 		public String[] bushBlockList = { "15-minecraft:deadbush", "10-minecraft:tallgrass:2", "5-minecraft:cactus" };
+		
+		@Config.Comment({"Weighted list of items that may drop from infested leaves. Format is: [weight]-modid:blockname:meta"})
+		public String[] infestedDropList = { "15-dreamtree:lightbug", "10-dreamtree:firebug", "5-dreamtree:bluebug" };
+		
+		@Config.Comment({"Valid tools for harvesting infested leaves"})
+		public String[] infestedHarvestingTools = { "minecraft:stick", "minecraft:carrot_on_a_stick" };
 	}
 	
 	public static class ConfigDreamTreeWorld
@@ -70,28 +79,41 @@ public class Configs
 			if (ev.getModID().equals(DreamTree.MODID)) 
 			{
 				ConfigManager.sync(DreamTree.MODID, Config.Type.INSTANCE);
-				BiomeAncientGarden.updateBiomeConfigs();
-				BlockSapWood.setSapBlockConfigs();
-				BlockDreamwoodBushLeaves.setBushBlockConfigs();
-				updateWeightedLists();
+				updateConfigs();
 			}
 		}
 	}
 	
+	public static void updateConfigs()
+	{
+		BiomeAncientGarden.updateBiomeConfigs();
+		BlockSapWood.setSapBlockConfigs();
+		BlockDreamwoodBushLeaves.setBushBlockConfigs();
+		BlockDreamwoodInfestedLeaves.updateToolList();
+		updateWeightedLists();
+	}
+	
 	public static void updateWeightedLists()
 	{
-		weightedSapBlockList = new WeightedList();
+		weightedSapBlockList = new WeightedList<IBlockState>();
 		for(String s : Configs.general.sapBlockList)
 		{
 			String[] splitty = s.split("-");
 			weightedSapBlockList.add(BlockUtil.getStateFromString(splitty[1].trim()), Integer.parseInt(splitty[0]));
 		}
 		
-		weightedBushBlockList = new WeightedList();
+		weightedBushBlockList = new WeightedList<IBlockState>();
 		for(String s : Configs.general.bushBlockList)
 		{
 			String[] splitty = s.split("-");
 			weightedBushBlockList.add(BlockUtil.getStateFromString(splitty[1].trim()), Integer.parseInt(splitty[0]));
+		}
+		
+		weightedInfestedDrops = new WeightedList<ItemStack>();
+		for(String s : Configs.general.infestedDropList)
+		{
+			String[] splitty = s.split("-");
+			weightedInfestedDrops.add(BlockUtil.getItemStackFromString(splitty[1].trim()), Integer.parseInt(splitty[0]));
 		}
 	}
 }

@@ -3,7 +3,6 @@ package fluke.dreamtree.block;
 import java.util.List;
 import java.util.Random;
 
-import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.config.Configs;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;

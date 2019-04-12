@@ -2,7 +2,6 @@ package fluke.dreamtree.world;
 
 import fluke.dreamtree.config.Configs;
 import net.minecraft.init.Biomes;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

@@ -1,6 +1,5 @@
 package fluke.dreamtree.block;
 
-import fluke.dreamtree.DreamTree;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

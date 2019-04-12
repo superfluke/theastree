@@ -4,7 +4,6 @@ import java.util.Random;
 
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.config.Configs;
-import fluke.dreamtree.util.BlockUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

@@ -5,7 +5,6 @@ import java.util.Random;
 
 import fluke.dreamtree.DreamTree;
 import fluke.dreamtree.config.Configs;
-import fluke.dreamtree.util.BlockUtil;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
