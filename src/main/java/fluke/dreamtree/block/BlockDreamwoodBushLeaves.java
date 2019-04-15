@@ -49,18 +49,14 @@ public class BlockDreamwoodBushLeaves extends BlockLeaves
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
 		
-		if(rand.nextInt(growthDelay) == 0)
+		if(rand.nextInt(growthDelay) == 0 && !Configs.weightedBushBlockList.isEmpty())
 		{	
-			if(Configs.weightedBushBlockList != null)
+			IBlockState below = world.getBlockState(pos.down());
+			if(below == AIR)
 			{
-				IBlockState below = world.getBlockState(pos.down());
-				if(below == AIR)
-				{
-					IBlockState bushy = Configs.weightedBushBlockList.selectRandom();
-					world.setBlockState(pos.down(), bushy);
-				}
+				IBlockState bushy = Configs.weightedBushBlockList.selectRandom();
+				world.setBlockState(pos.down(), bushy);
 			}
-			
 		}
 	}
 

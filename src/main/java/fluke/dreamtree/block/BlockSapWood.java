@@ -58,18 +58,14 @@ public class BlockSapWood extends Block
 	
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		if(rand.nextInt(sapRegenSpeed) == 0)
+		if(rand.nextInt(sapRegenSpeed) == 0 && !Configs.weightedSapBlockList.isEmpty())
 		{
-			if(Configs.weightedSapBlockList != null)
+			IBlockState below = world.getBlockState(pos.down());
+			if(below == AIR)
 			{
-				IBlockState below = world.getBlockState(pos.down());
-				if(below == AIR)
-				{
-					IBlockState sappy = Configs.weightedSapBlockList.selectRandom();
-					world.setBlockState(pos.down(), sappy);
-				}
-			}
-			
+				IBlockState sappy = Configs.weightedSapBlockList.selectRandom();
+				world.setBlockState(pos.down(), sappy);
+			}			
 		}
 	}
 	

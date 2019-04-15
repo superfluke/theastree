@@ -12,13 +12,7 @@
   },
   "variants": {
     "inventory": [{"model": "dreamtree:dreamwood_half_slab"}],
-    "half": {
-      "bottom": {
-        "model": "dreamtree:dreamwood_half_slab"
-      },
-      "top": {
-        "model": "dreamtree:dreamwood_upper_slab"
-      }
-    }
+    "half=bottom,variant=default":{ "model": "dreamtree:dreamwood_half_slab" },
+    "half=top,variant=default":{ "model": "dreamtree:dreamwood_upper_slab" }
   }
 }

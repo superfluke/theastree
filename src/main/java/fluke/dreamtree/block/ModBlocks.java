@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -123,13 +124,14 @@ public class ModBlocks
 		reggy.register(new ItemBlock(ModBlocks.dwTorch).setRegistryName(ModBlocks.dwTorch.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwTrapdoor).setRegistryName(ModBlocks.dwTrapdoor.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.dwStairs).setRegistryName(ModBlocks.dwStairs.getRegistryName()));
-		reggy.register(new ItemBlock(ModBlocks.dwSlabHalf).setRegistryName(ModBlocks.dwSlabHalf.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.heartwood).setRegistryName(ModBlocks.heartwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.sapwood).setRegistryName(ModBlocks.sapwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.burlwood).setRegistryName(ModBlocks.burlwood.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.lightbug).setRegistryName(ModBlocks.lightbug.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.firebug).setRegistryName(ModBlocks.firebug.getRegistryName()));
 		reggy.register(new ItemBlock(ModBlocks.bluebug).setRegistryName(ModBlocks.bluebug.getRegistryName()));
+
+		reggy.register(new ItemSlab(ModBlocks.dwSlabHalf, ModBlocks.dwSlabHalf, ModBlocks.dwSlabDouble).setRegistryName(ModBlocks.dwSlabHalf.getRegistryName()));
 		
 		dreamfruit = new ItemFood(2, 0.3F, false).setUnlocalizedName(DreamTree.MODID + ".dreamfruit");
 		reggy.register(dreamfruit.setRegistryName("dreamfruit"));

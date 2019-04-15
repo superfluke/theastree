@@ -33,5 +33,10 @@ public class WeightedList <T>
 		DreamTree.logger.error(list.toString());
 		throw new RuntimeException("WeightedList selection ate shit");
 	}
+	
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
 
 }

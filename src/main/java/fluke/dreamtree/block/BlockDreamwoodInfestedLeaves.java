@@ -89,15 +89,12 @@ public class BlockDreamwoodInfestedLeaves extends BlockDreamwoodLeavesBase
 	{
 		if (!world.isRemote)
 		{
-			if (harvestTools.contains(player.getHeldItem(hand).getItem()))
+			if (harvestTools.contains(player.getHeldItem(hand).getItem()) && (Boolean) state.getValue(INFESTED) && !Configs.weightedInfestedDrops.isEmpty())
 			{
-				if ((Boolean) state.getValue(INFESTED))
-				{
-					world.setBlockState(pos, state.withProperty(INFESTED, false));
-					EntityItem entity = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, Configs.weightedInfestedDrops.selectRandom());
-					world.spawnEntity(entity);
-					return true;
-				}
+				world.setBlockState(pos, state.withProperty(INFESTED, false));
+				EntityItem entity = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, Configs.weightedInfestedDrops.selectRandom());
+				world.spawnEntity(entity);
+				return true;		
 			}
 		}
 		return false;
