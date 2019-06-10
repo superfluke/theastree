@@ -23,6 +23,7 @@ public class BlockHeartWood extends Block
 		super(Material.WOOD);
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setHardness(2.0F);
+        //this.setHarvestLevel("axe", 3);    
         this.setSoundType(SoundType.WOOD);
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
@@ -43,6 +44,18 @@ public class BlockHeartWood extends Block
             }
         }
     }
+	
+//	@Override 
+//	public String getHarvestTool(IBlockState state)
+//    {
+//        return "axe";
+//    }
+//	
+//	@Override
+//	public int getHarvestLevel(IBlockState state)
+//    {
+//        return 3;
+//    }
 	
 	@Override 
 	public boolean canSustainLeaves(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos)

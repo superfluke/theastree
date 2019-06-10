@@ -21,6 +21,7 @@ public class BlockDreamwoodRoot extends Block
 		super(Material.WOOD);
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setHardness(2.0F);
+//        this.setHarvestLevel("axe", 2);
         this.setSoundType(SoundType.WOOD);
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);

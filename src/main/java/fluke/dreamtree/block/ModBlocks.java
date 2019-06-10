@@ -140,7 +140,7 @@ public class ModBlocks
 		reggy.register(dreamwooddoor);
 		dwDoor.setItemStack(new ItemStack(dreamwooddoor));
 	}
-	
+
 	@SideOnly(Side.CLIENT)
     public static void initModels() 
 	{
@@ -167,7 +167,6 @@ public class ModBlocks
 		
 		//lazy
 	    ModelLoader.setCustomModelResourceLocation(dreamfruit, 0, new ModelResourceLocation(dreamfruit.getRegistryName(), "inventory"));
-
 	}
 
 }

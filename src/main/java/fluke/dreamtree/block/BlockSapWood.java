@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -30,6 +31,7 @@ public class BlockSapWood extends Block
 		this.setTickRandomly(true);
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         this.setHardness(2.0F);
+        this.setHarvestLevel("axe", 1);
         this.setSoundType(SoundType.WOOD);
         setUnlocalizedName(DreamTree.MODID + "." + REG_NAME); 
 		setRegistryName(REG_NAME);
@@ -79,6 +81,17 @@ public class BlockSapWood extends Block
     public boolean isWood(net.minecraft.world.IBlockAccess world, BlockPos pos)
     { 
     	return true; 
+    }
+    
+    protected ItemStack getSilkTouchDrop(IBlockState state)
+    {
+        return new ItemStack(Item.getItemFromBlock(ModBlocks.sapwood), 1, 0);
+    }
+    
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(ModBlocks.dwLog);
     }
 
     @SideOnly(Side.CLIENT)
