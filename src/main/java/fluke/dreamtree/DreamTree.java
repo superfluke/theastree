@@ -22,7 +22,7 @@ public class DreamTree
 
 	public static final String MODID = "dreamtree";
 	public static final String NAME = "Dream Tree";
-	public static final String VERSION = "0.6.0";
+	public static final String VERSION = "0.7.0";
 	public static final String DEPENDS = "";
 	public static WorldTypeDreamTree worldTypeDreamTree;
 	public static BiomeAncientGarden biomeGarden;

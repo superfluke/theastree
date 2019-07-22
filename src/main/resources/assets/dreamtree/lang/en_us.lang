@@ -12,10 +12,10 @@ tile.dreamtree.dreamwoodstairs.name=Dreamwood Stairs
 tile.dreamtree.dreamwoodslab.name=Dreamwood Slab
 tile.dreamtree.burlwood.name=Burl Wood
 tile.dreamtree.heartwood.name=Heart Wood
-tile.dreamtree.sapwood.name=Sap Wood
-tile.dreamtree.lightbug.name=Yellow Bug
-tile.dreamtree.firebug.name=Red Bug
-tile.dreamtree.bluebug.name=Blue Bug
+tile.dreamtree.sapwood.name=Sapwood
+tile.dreamtree.lightbug.name=Glow Bug
+tile.dreamtree.firebug.name=Fire Bug
+tile.dreamtree.bluebug.name=Water Bug
 
 item.dreamtree.dreamwooddoor_item.name=Dreamwood Door
 item.dreamtree.dreamfruit.name=Dream Fruit
